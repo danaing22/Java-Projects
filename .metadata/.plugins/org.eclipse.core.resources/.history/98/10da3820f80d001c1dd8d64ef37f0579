@@ -1,0 +1,74 @@
+import java.text.NumberFormat;
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {	
+		double principal = readNumber("Principal: ", 1000, 1_000_000);
+		double annualInterestRate = readNumber("Annual Interest Rate(Percent): ", 0, 30);
+		byte loanPeriodInYears = (byte) readNumber("Loan Period(Years): ", 1, 30);
+		
+		final byte MONTHS = 12;
+		final byte PERCENT = 100;
+		double rate = annualInterestRate / MONTHS / PERCENT;
+		double loanPeriod = loanPeriodInYears * MONTHS;
+		
+//		String mortgageFormatted = NumberFormat.getCurrencyInstance().format
+//				(calculateMortgage(principal, annualInterestRate, loanPeriodInYears));
+		String mortgageFormatted = NumberFormat.getCurrencyInstance().format
+				(calculateMortgage(principal, rate, loanPeriod));
+		System.out.println("Mortgage\n------- \nMonthly Payments: " + mortgageFormatted);
+	}
+	
+	//get user input
+	public static double readNumber(String prompt, double min, double max) {
+		Scanner scanner = new Scanner(System.in);
+		double value;
+		while(true) {
+			System.out.print(prompt);
+			value = scanner.nextDouble();
+			if(value >= min && value <= max)
+				break;
+			System.out.println("Please enter a value between " + min + " and " + max + ".");
+		}
+		return value;
+	}
+	
+	//calculate mortgage payment
+//	public static double calculateMortgage(double principal, double annualInterestRate, 
+//			byte loanPeriodInYears){
+//		final byte MONTHS = 12;
+//		final byte PERCENT = 100;
+//		double rate = annualInterestRate / MONTHS / PERCENT;
+//		double loanPeriod = loanPeriodInYears * MONTHS;
+//		
+//		double mortgage = principal * ((rate * (Math.pow(1 + rate, loanPeriod))) 
+//				/ ((Math.pow(1 + rate, loanPeriod)) - 1));
+//		return mortgage;
+//	}
+	public static double calculateMortgage(double principal, double rate, 
+			double loanPeriod){
+		double mortgage = principal * ((rate * (Math.pow(1 + rate, loanPeriod))) 
+				/ ((Math.pow(1 + rate, loanPeriod)) - 1));
+		return mortgage;
+	}
+	
+	
+	public static double loanBalance(double principal, double monthlyInterest, byte paymentsTotal,
+			byte paymentsMade) {
+		double balance = principal * ((Math.pow(1 + monthlyInterest, paymentsTotal)) 
+				- Math.pow(1 + monthlyInterest,  paymentsMade)) 
+				/ (Math.pow(1 + monthlyInterest, paymentsTotal) - 1);
+		return balance;
+	}
+	
+	public static double paymentSchedule(double principal, double monthlyInterest, byte loanPeriod) {
+		for(byte i = 0; i < loanPeriod; i++) {
+			String amount = NumberFormat.getCurrencyInstance().format(loanBalance(principal,
+					monthlyInterest, loanPeriod, i));
+			System.out.println(amount);
+		}
+		return 0;
+	}
+
+}

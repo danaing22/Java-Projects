@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		final byte MONTHS = 12;
+		final byte PERCENT = 100;
+		
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Principal: ");
+		double principal = scanner.nextDouble();
+		System.out.print("Annual Interest Rate(Percent): ");
+		double annualInterestRate = scanner.nextDouble();
+		System.out.print("Loan Period(Years): ");
+		byte loanPeriodInYears = scanner.nextByte();
+		
+		double rate = annualInterestRate / MONTHS / PERCENT;
+		double loanPeriod = loanPeriodInYears * MONTHS;
+		double mortgage = principal * ((rate * (Math.pow(1 + rate, loanPeriod))) 
+				/ ((Math.pow(1 + rate, loanPeriod)) - 1));
+
+	}
+	
+	//get user input
+	public static double readNumber() {
+		return 0;
+	}
+	
+	//calculate mortgage payment
+	public static double calculateMortgage(){
+		return 0;
+		
+	}
+
+}

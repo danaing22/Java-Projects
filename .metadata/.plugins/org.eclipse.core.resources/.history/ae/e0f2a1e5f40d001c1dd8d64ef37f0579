@@ -1,0 +1,45 @@
+import java.text.NumberFormat;
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {	
+		double principal = readNumber("Principal: ", 1000, 1_000_000);
+		double annualInterestRate = readNumber("Annual Interest Rate(Percent): ", 0, 30);
+		byte loanPeriodInYears = (byte) readNumber("Loan Period(Years): ", 1, 30);
+		
+		String mortgageFormatted = NumberFormat.getCurrencyInstance().format
+				(calculateMortgage(principal, annualInterestRate, loanPeriodInYears));
+		System.out.println("Mortgage: " + mortgageFormatted);
+	}
+	
+	//get user input
+	public static double readNumber(String prompt, double min, double max) {
+		Scanner scanner = new Scanner(System.in);
+		double value;
+		while(true) {
+			System.out.print(prompt);
+			value = scanner.nextDouble();
+			if(value >= min && value <= max)
+				break;
+			System.out.println("Please enter a value between " + min + " and " + max + ".");
+		}
+		scanner.close();
+		return value;
+	}
+	
+	//calculate mortgage payment
+	public static double calculateMortgage(double principal, double annualInterestRate, 
+			byte loanPeriodInYears){
+		final byte MONTHS = 12;
+		final byte PERCENT = 100;
+		double rate = annualInterestRate / MONTHS / PERCENT;
+		double loanPeriod = loanPeriodInYears * MONTHS;
+		
+		double mortgage = principal * ((rate * (Math.pow(1 + rate, loanPeriod))) 
+				/ ((Math.pow(1 + rate, loanPeriod)) - 1));
+		return mortgage;
+		
+	}
+
+}
