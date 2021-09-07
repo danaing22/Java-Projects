@@ -10,14 +10,12 @@ public class Main {
 		double annualInterestRate = readNumber("Annual Interest Rate(Percent): ", 0, 30);
 		byte loanPeriodInYears = (byte) readNumber("Loan Period(Years): ", 1, 30);
 		
-		printMortgage(principal, annualInterestRate, loanPeriodInYears);
-		printPaymentSchedule(principal, annualInterestRate, loanPeriodInYears);
-	}
-
-	public static void printMortgage(double principal, double annualInterestRate, byte loanPeriodInYears) {
 		String mortgageFormatted = NumberFormat.getCurrencyInstance().format
 				(calculateMortgage(principal, annualInterestRate, loanPeriodInYears));
 		System.out.println("\nMORTGAGE\n-------- \nMonthly Payments: " + mortgageFormatted);
+		
+		System.out.println("\nPAYMENT SCHEDULE\n----------------");
+		paymentSchedule(principal, annualInterestRate, loanPeriodInYears);
 	}
 	
 	//get user input
@@ -56,12 +54,12 @@ public class Main {
 		return balance;
 	}
 	
-	public static void printPaymentSchedule(double principal, double annualInterestRate, byte loanPeriodInYears) {
-		System.out.println("\nPAYMENT SCHEDULE\n----------------");
+	public static void paymentSchedule(double principal, double annualInterestRate, byte loanPeriodInYears) {
 		for(int i = 1; i <= loanPeriodInYears * MONTHS; i++) {
 			String amount = NumberFormat.getCurrencyInstance().format(loanBalance(principal,
 					annualInterestRate, loanPeriodInYears, i));
 			System.out.println(amount);
 		}
 	}
+
 }
