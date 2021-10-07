@@ -1,4 +1,3 @@
-import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
@@ -50,14 +49,14 @@ public class Main {
             order[1] = player2;
             player2.setPlayerMarker("O");
             System.out.println("Order has been randomly generated and " +
-                    player1.getPlayerName() + " goes first.");
+                    player1.getPLAYER_NAME() + " goes first.");
         } else {
             order[0] = player2;
             player2.setPlayerMarker("X");
             order[1] = player1;
             player1.setPlayerMarker("O");
             System.out.println("Order has been randomly generated and " +
-                    player2.getPlayerName() + " goes first.");
+                    player2.getPLAYER_NAME() + " goes first.");
         }
         return order;
     }

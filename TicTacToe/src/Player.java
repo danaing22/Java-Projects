@@ -1,16 +1,16 @@
 public class Player {
-    private String playerName;
+    private final String PLAYER_NAME;
     private int movesMade; // keeps track of number of moves made in current game
     private String marker;
 
     public Player(String playerName) {
-        this.playerName = playerName;
+        this.PLAYER_NAME = playerName;
         movesMade = 0;
     }
 
     //getter for name
-    public String getPlayerName(){
-        return playerName;
+    public String getPLAYER_NAME(){
+        return PLAYER_NAME;
     }
 
     //getter and setter for marker

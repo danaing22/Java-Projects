@@ -17,5 +17,8 @@ public class Successors {
         moveList.add(move);
     }
 
-    //todo add methods for sorting small to large and large to small?
+    public ArrayList<String[][]> getBoardList(){ return boardList; }
+
+    public ArrayList<int[]> getMoveList(){ return moveList; }
+
 }

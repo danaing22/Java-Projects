@@ -29,7 +29,7 @@ public class CurrentGame {
             win = CheckWin.checkWin(board.getBoard(), currentPlayer.getPlayerMarker()); // check if player wins
         board.printBoard();
         if(win)
-            System.out.println("Congratulations " + currentPlayer.getPlayerName() + ", you won!");
+            System.out.println("Congratulations " + currentPlayer.getPLAYER_NAME() + ", you won!");
         return win;
     }
 
@@ -37,7 +37,7 @@ public class CurrentGame {
         int row = -1;
         int column = -1;
         boolean validMove = false;
-        System.out.println(currentPlayer.getPlayerName() + " please make your move.");
+        System.out.println(currentPlayer.getPLAYER_NAME() + " please make your move.");
         while(!validMove) {
             System.out.println("Row:");
             if (scanner.hasNextInt())

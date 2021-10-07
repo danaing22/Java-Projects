@@ -1,12 +1,12 @@
-public class MiniMaxObj {
+public class MiniMaxObj implements Comparable<MiniMaxObj>{
     private int heuristic;
-    private GameBoard board;
+    private String[][] board;
     private int[] move;
 
-    public MiniMaxObj(GameBoard board) {
+    public MiniMaxObj(String[][] board) {
         heuristic = 0;
         this.board = board;
-        move = new int[2];
+        move = new int[]{10, 10}; //initialize to arbitrary move value not on board
     }
 
     public int getHeuristic() {
@@ -17,11 +17,11 @@ public class MiniMaxObj {
         this.heuristic = heuristic;
     }
 
-    public GameBoard getBoard() {
+    public String[][] getBoardObj() {
         return board;
     }
 
-    public void setBoard(GameBoard board) {
+    public void setBoardObj(String[][] board) {
         this.board = board;
     }
 
@@ -31,5 +31,16 @@ public class MiniMaxObj {
 
     public void setMove(int[] move) {
         this.move = move;
+    }
+
+    @Override
+    public int compareTo(MiniMaxObj o) {
+        if(this.heuristic < o.getHeuristic())
+            return -1;
+        else if(this.heuristic == o.getHeuristic())
+            return 0;
+        else if(this.heuristic > o.getHeuristic())
+            return 1;
+        return 0;
     }
 }

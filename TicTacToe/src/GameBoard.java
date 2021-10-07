@@ -5,7 +5,7 @@ public class GameBoard {
     private String[][] board;
     private static String firstMarker;
     private static String secondMarker;
-    private static int spacesOpen;
+    private int spacesOpen;
     public static final int MAX_ROWS = 3;
     public static final int MAX_COLUMNS = 3;
 
@@ -37,7 +37,9 @@ public class GameBoard {
         }
     }
 
-    public static int getSpacesOpen(){
+    public void decrementSpacesOpen(){spacesOpen--;}
+
+    public int getSpacesOpen(){
         return spacesOpen;
     }
 
