@@ -68,7 +68,7 @@ public class Validation {
                 valid = true;
         }
         // check that board space is not already occupied
-        if(!(gameBoard[row][column] == "")){
+        if(!(gameBoard[row][column].equals(" "))){
             System.out.print("This space is already occupied! ");
             return false;
         }

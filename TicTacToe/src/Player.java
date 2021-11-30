@@ -1,11 +1,16 @@
 public class Player {
     private final String PLAYER_NAME;
     private int movesMade; // keeps track of number of moves made in current game
-    private String marker;
+    private String marker; // this player's marker
+    private boolean isComputer;
 
     public Player(String playerName) {
         this.PLAYER_NAME = playerName;
         movesMade = 0;
+        if(playerName.equals("Computer"))
+            isComputer = true;
+        else
+            isComputer = false;
     }
 
     //getter for name
@@ -28,4 +33,6 @@ public class Player {
     public void incrementMovesMade(){
         movesMade++;
     }
+
+    public boolean returnIsComputer(){return isComputer;}
 }

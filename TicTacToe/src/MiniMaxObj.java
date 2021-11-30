@@ -1,7 +1,9 @@
 public class MiniMaxObj implements Comparable<MiniMaxObj>{
-    private int heuristic;
+    private double heuristic;
     private String[][] board;
     private int[] move;
+    private String aiMarker;
+    private String opponentMarker;
 
     public MiniMaxObj(String[][] board) {
         heuristic = 0;
@@ -9,20 +11,16 @@ public class MiniMaxObj implements Comparable<MiniMaxObj>{
         move = new int[]{10, 10}; //initialize to arbitrary move value not on board
     }
 
-    public int getHeuristic() {
+    public double getHeuristic() {
         return heuristic;
     }
 
-    public void setHeuristic(int heuristic) {
+    public void setHeuristic(double heuristic) {
         this.heuristic = heuristic;
     }
 
     public String[][] getBoardObj() {
         return board;
-    }
-
-    public void setBoardObj(String[][] board) {
-        this.board = board;
     }
 
     public int[] getMove() {
@@ -31,6 +29,19 @@ public class MiniMaxObj implements Comparable<MiniMaxObj>{
 
     public void setMove(int[] move) {
         this.move = move;
+    }
+
+    public void setAIMarker(String marker){this.aiMarker = marker;}
+
+    public String getAIMarker(){return this.aiMarker;}
+
+    public String getOpponentMarker() {return opponentMarker;}
+
+    public void setOpponentMarker(String aiMarker) {
+        if(aiMarker.equals("X"))
+            this.opponentMarker = "O";
+        else if(aiMarker.equals("O"))
+            this.opponentMarker = "X";
     }
 
     @Override

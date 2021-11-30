@@ -1,10 +1,13 @@
 import java.util.ArrayList;
 
-public class Successors {
+/*
+Holds Successors object containing a list of boards with corresponding moves
+ */
+public class SuccessorListObj {
     private ArrayList<String[][]> boardList; // holds boards
     private ArrayList<int[]> moveList; // holds matching moves
 
-    public Successors() {
+    public SuccessorListObj() {
         boardList = new ArrayList<>();
         moveList = new ArrayList<>();
     }

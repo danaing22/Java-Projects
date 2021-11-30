@@ -1,26 +1,29 @@
 /*
-Tracks game board status
+Tracks game board status such as board,
  */
 public class GameBoard {
     private String[][] board;
-    private static String firstMarker;
-    private static String secondMarker;
     private int spacesOpen;
-    public static final int MAX_ROWS = 3;
-    public static final int MAX_COLUMNS = 3;
 
+    /*
+    Constructor, initializes fields
+     */
     public GameBoard() {
         board = new String[3][3];
         initializeBoard();
-        String firstMarker = "X";
-        String secondMarker = "O";
         spacesOpen = 9;
     }
 
+    /*
+    returns board
+     */
     public String[][] getBoard(){
         return board;
     }
 
+    /*
+    Places player's piece on board, decrements amount of spaces open on the board
+     */
     public void makeMove(int row, int column, Player player){
         board[row][column] = player.getPlayerMarker();
         spacesOpen--;
@@ -37,12 +40,16 @@ public class GameBoard {
         }
     }
 
-    public void decrementSpacesOpen(){spacesOpen--;}
-
+    /*
+    Returns the amount of open spaces on the board
+     */
     public int getSpacesOpen(){
         return spacesOpen;
     }
 
+    /*
+    Prints the current game board
+     */
     public void printBoard(){
         System.out.println("   0   1   2 ");
         System.out.println("0  " + board[0][0] + " | " +
