@@ -77,7 +77,7 @@ public class CurrentGame {
                 System.out.println("Column:");
                 if (scanner.hasNextInt())
                     column = scanner.nextInt();
-                validMove = Validation.playerMoveValidation(row, column);
+                validMove = Validation2.playerMoveValidation(row, column);
                 if (!validMove)
                     System.out.println("That move was not valid, please try again.");
             }

@@ -14,18 +14,18 @@ public class Main {
         Player player2;
 
         System.out.println("Welcome! Would you like to play a game of TicTacToe?");
-        playing = Validation.playingValidation(); // start game and validate user input
+        playing = Validation2.playingValidation(); // start game and validate user input
         if(!playing)
             System.out.println("Goodbye!");
         else {
             System.out.println("What is your name Player 1?");
-            player1 = new Player(Validation.nameValidation()); // create player object for player1
-            computer = Validation.friendOrComputer(); // t/f if playing against computer
+            player1 = new Player(Validation2.nameValidation()); // create player object for player1
+            computer = Validation2.friendOrComputer(); // t/f if playing against computer
 
             // if playing a friend, get name and create player instance
             if(!computer) {
                 System.out.println("What is your name Player 2?");
-                player2 = new Player(Validation.nameValidation());
+                player2 = new Player(Validation2.nameValidation());
             } else  // otherwise, create player instance for computer with default name
                 player2 = new Player("Computer");
 
@@ -37,7 +37,7 @@ public class Main {
 
                 // after game is finished ask if user would like to play again
                 System.out.println("Would you like to play another game?");
-                playing = Validation.playingValidation();
+                playing = Validation2.playingValidation();
                 if(!playing)
                     System.out.println("Thanks for playing, goodbye!");
             }
